@@ -1,0 +1,21 @@
+.workoutContainer{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+}
+.formContainer{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+}
+.loginContainer{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+}
+.signupContainer{
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.bubble {
+    box-shadow: 3px 2px 8px rgba(222, 231, 231, 0.1);
+
+}
