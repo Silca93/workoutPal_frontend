@@ -13,7 +13,14 @@ export default function Home() {
 
     useEffect(() => {
         const fetchWorkouts = async () => {
-            const response = await fetch('http://localhost:4000/api/workouts', {
+            const response = await fetch(
+
+                //?for local development
+                // 'http://localhost:4000/api/workouts'
+
+                //!for production
+                'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
+                , {
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${user.token}`
@@ -47,7 +54,7 @@ export default function Home() {
         }
         const response = await fetch(
             //?for local development
-            // 'http://localhost:4000/api/workouts/'
+            //'http://localhost:4000/api/workouts/'
 
             //!for production 
             'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
