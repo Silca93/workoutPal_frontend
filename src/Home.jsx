@@ -45,7 +45,14 @@ export default function Home() {
         if (!user) {
             return 
         }
-        const response = await fetch('http://localhost:4000/api/workouts/' + id, {
+        const response = await fetch(
+            //?for local development
+            // 'http://localhost:4000/api/workouts/'
+
+            //!for production 
+            'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
+
+            + id, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
