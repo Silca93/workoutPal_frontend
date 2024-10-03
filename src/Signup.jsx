@@ -19,7 +19,7 @@ export default function Signup() {
     }
 
   return (
-    <div className='flex justify-center items-center w-[400px]'>
+    <div className='flex justify-center items-center w-[400px] max-[550px]:w-[330px]'>
     <form 
         className='signupContainer w-full h-auto bg-white rounded-md p-4 flex flex-col border-[1px] border-gray-400 justify-center items-center' 
         onSubmit={handleSubmit}

@@ -1,81 +1,119 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react'
-
 import { useAuthContext } from '../hooks/useAuthContext';
+import { useParams } from 'react-router-dom';
+import { IoMdArrowRoundBack } from "react-icons/io";
 
-export default function () {
 
+
+export default function Update () {
+
+    const { id } = useParams();
     const {user} = useAuthContext()
 
     const [title, setTitle] = useState('');
     const [load, setLoad] = useState('');
     const [reps, setReps] = useState('');
     const [error, setError] = useState(null);
-
     const [fieldError, setFieldError] = useState(false)
 
 
-    //submit a new workout
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    useEffect(() => {
+        const fetchWorkout = async () => {
+          if (!user) return;
+    
+          const response = await fetch(
+            //?for local dev
+            'http://localhost:4000/api/workouts/'
+
+            //!for production//
+            // 'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
+            + id, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${user.token}`,
+            },
+          });
+    
+          const json = await response.json();
+          if (response.ok) {
+            setTitle(json.title);
+            setLoad(json.load);
+            setReps(json.reps);
+          } else {
+            setError(json.error);
+          }
+        };
+    
+        if (id) {
+            fetchWorkout();
+            }
+        }, [id, user]);
+
+
+    //update a new workout
+    const handleUpdate = async (e) => {
+        e.preventDefault();
 
         if (!user) {
-            setError('You must be logged in')
-
-            return 
+         return  console.log('user not logged in');
+            
         }
 
-        if (!title || !load || !reps) {
-            setFieldError(!fieldError)
-        }
 
         const workout = {title, load, reps}
-
+            
+        
         const response = await fetch(
             //?for local development
-            // 'http://localhost:4000/api/workouts'
+            // 'http://localhost:4000/api/workouts/'
 
             //!for production
             'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
             
-            , {
-            method: 'POST',
+            + id , {
+            method: 'PATCH',
             body: JSON.stringify(workout),
-            headers: {
+            headers : {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()
-        console.log(json);
 
         if (!response.ok) {
-            setError(json.error)
+
+            setError(json.error);
+
         } else {
             setTitle('');
             setLoad('');
             setReps('');
-            setError(null);
-            console.log('New workout added', json);
+            console.log('Workout updated', json);
 
             window.location.reload();
-            
         }
-        
     }
 
-  
-  
-  return (
-    <div className='flex justify-center items-start max-[800px]:items-center w-full h-full '>
+return (
+    <div className='flex flex-col justify-center items-center w-[400px] max-[550px]:w-[330Px] '>
+        <div className='w-full h-[3rem] '>
+            <Link to="/">
+            <div className="backButton flex gap-1 w-[5rem] h-[2rem] ring-1 ring-slate-300 bg-white  rounded lg justify-center items-center">
+                <IoMdArrowRoundBack />
+                <h2>Back</h2>
+            </div>
+            </Link>
+        </div>
+
         <form 
-            action="POST" 
-            onSubmit={handleSubmit} 
-            className='formContainer w-full h-auto bg-white rounded-md p-4 flex flex-col justify-center items-center max-[800px]:w-[23rem] max-[800px]:h-[20rem] max-[600px]:w-[18rem] mb-2 mt-2'
+            onSubmit={handleUpdate} 
+            className='formContainer w-full h-auto border-gray-400 bg-white rounded-md p-4 flex flex-col justify-center items-center'
         >
             <div className='w-full mb-2'>
 
-            <h1 className='text-xl mb-4 text-start'>ADD A NEW WORKOUT</h1>
+            <h1 className='text-xl mb-4 text-start'>UPDATE WORKOUT</h1>
             </div>
 
             <div className="w-full mb-2">
@@ -117,5 +155,5 @@ export default function () {
             <button type='submit' className="mt-4 bg-green-500 text-white px-2 py-1 rounded">Submit</button>
         </form>
     </div>
-  )
+    )
 }

@@ -15,7 +15,7 @@ export default function Login() {
     }
 
   return (
-    <div className='flex justify-center items-center w-[400px]'>
+    <div className='flex justify-center items-center w-[400px] max-[550px]:w-[330px]'>
     <form 
         action="POST" 
         className='loginContainer w-full h-auto bg-white border-[1px] border-gray-400 rounded-md p-4 flex flex-col justify-center items-center' 
