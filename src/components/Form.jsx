@@ -33,10 +33,10 @@ export default function () {
 
         const response = await fetch(
             //?for local development
-            'http://localhost:4000/api/workouts'
+            // 'http://localhost:4000/api/workouts'
 
             //!for production
-            // 'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
+            'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
             
             , {
             method: 'POST',
