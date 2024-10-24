@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useSignup } from './hooks/useSignup'
+import Isloading from './components/Isloading'
 
 export default function Signup() {
     const [email, setEmail] = useState('')
@@ -49,7 +50,9 @@ export default function Signup() {
                 value={password} 
             />
         </div>
-
+        {isLoading?
+        <Isloading/>
+        :
         <button 
             disabled={isLoading} 
             className="mt-4 bg-green-500 text-white px-2 py-1 rounded" 
@@ -57,6 +60,7 @@ export default function Signup() {
         >
             Sign up
         </button>
+        }
         {error && <div className='text-red-500 mt-2'>{error}</div>}
     </form>
 </div>

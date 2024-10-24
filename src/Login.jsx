@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useLogin } from './hooks/useLogin'
 
 import Isloading from './components/Isloading';
+
 export default function Login() {
     const {login, error, isLoading} = useLogin(); 
     const [email, setEmail] = useState('')
@@ -47,14 +48,11 @@ export default function Login() {
                 value={password} 
             />
         </div>
-        {/* <div className='w-[10rem] h-[3rem] bg-red-300'>
-       
-            <div class="loader">loading..</div>
-        </div> */}
+        
         
 
             {isLoading ?
-           <Isloading/>
+            <Isloading/>
             :
             <button
                 className="mt-4 text-white px-2 py-1 rounded 

@@ -13,10 +13,10 @@ export const useSignup = () => {
         setError(null)
         const response = await fetch(
             //for local dev
-            // 'http://localhost:4000/api/user/signup'
+            'http://localhost:4000/api/user/signup'
 
             //!for production
-            'https://workoutpal-backend-ukaw.onrender.com/api/user/signup'
+            // 'https://workoutpal-backend-ukaw.onrender.com/api/user/signup'
             
             , {
             method: 'POST',
