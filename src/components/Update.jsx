@@ -25,10 +25,10 @@ export default function Update () {
     
           const response = await fetch(
             //?for local dev
-            'http://localhost:4000/api/workouts/'
+            // 'http://localhost:4000/api/workouts/'
 
             //!for production//
-            // 'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
+            'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
             + id, {
             headers: {
               'Content-Type': 'application/json',
@@ -67,10 +67,10 @@ export default function Update () {
         
         const response = await fetch(
             //?for local development
-            // 'http://localhost:4000/api/workouts/'
+            'http://localhost:4000/api/workouts/'
 
             //!for production
-            'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
+            // 'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
             
             + id , {
             method: 'PATCH',

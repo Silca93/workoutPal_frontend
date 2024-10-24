@@ -23,3 +23,53 @@
     box-shadow: 3px 2px 8px rgba(222, 231, 231, 0.1);
 
 }
+
+/* From Uiverse.io by Shoh2008 */ 
+/* From Uiverse.io by Shoh2008 */ 
+.loader {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(34 197 94);
+    display: block;
+    margin: 0px 0px;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotationBack 1s ease-in-out infinite reverse;
+  }
+  
+  .loader::before {
+    content: '';
+    box-sizing: border-box;
+    left: 0;
+    top: 0;
+    transform: rotate(45deg);
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: rgb(34 197 94);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  .loader::after {
+    content: '';
+    box-sizing: border-box;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgb(53, 53, 53);
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  }
+  
+  @keyframes rotationBack {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(-360deg);
+    }
+  }

@@ -19,10 +19,10 @@ export default function Home() {
             const response = await fetch(
 
                 //?for local development
-                // 'http://localhost:4000/api/workouts'
+                'http://localhost:4000/api/workouts'
 
                 //!for production
-                'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
+                // 'https://workoutpal-backend-ukaw.onrender.com/api/workouts/'
                 , {
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,6 +87,7 @@ export default function Home() {
 //update a workout
 return (
     <div className='home w-[60rem] max-[960px]:w-[50rem] bg-gray-100 h-full flex gap-2 pt-3 max-[800px]:flex-col '> 
+   
        <div className="workouts flex flex-col gap-3 pl-3 w-[40rem] bg-[#f3f3f3] overflow-y-scroll pb-3 max-[800px]:w-full max-[800px]:items-center">
         {workouts && workouts.map((item, key) => (
             <div key={key} className='workoutContainer w-[25rem] max-[650px]:w-[20rem] h-[7rem] bg-white flex flex-col justify-center pl-2 rounded-md relative'>
