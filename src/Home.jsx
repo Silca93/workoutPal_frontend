@@ -79,7 +79,7 @@ export default function Home() {
         } else {
 
             setWorkouts(workouts.filter((item) => item._id !== id))
-            // window.location.reload();
+            
         }
 
     }
